@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+ <head>
+  <title>Puzzle</title>
+  <style>
+     input{
+         margin-bottom: 20px;
+     
+     </style>
+ </head>
+ <body>
+     <form id="form">
+         A:<input type="text" id="a" name="a"><br>
+         B:<input type="text" id="b" name="b"><br>
+         C:<input type="text" id="c" name="c"><br>
+         D:<input type="text" id="d" name="d"><br>
+         TOTAL:<input type="text" id="total" name="total">
+     </form>
+     <a href="https://www.youtube.com/watch?v=Z1x4v6yFQnQ">Puzzle 2.1 video</a>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    var a,b,c,d,total,count;
+var ahasval=false,bhasval=false,chasval=false,dhasval=false,thasval=false;
+count=0;
+
+$(function(){
+  $a=$('#a');
+  $b=$('#b');
+  $c=$('#c');
+  $d=$('#d');
+  $total=$('#total');
+  $a.blur(function(){
+    a=parseInt($a.val());
+    count++;
+    ahasval=true;
+    check();
+  });
+  $b.blur(function(){
+    b=parseInt($b.val());
+    count++;
+    bhasval=true;
+    check();
+  });
+  $c.blur(function(){
+    c=parseInt($c.val());
+    count++;
+    chasval=true;
+    check();
+  });
+  $d.blur(function(){
+    d=parseInt($d.val());
+    count++;
+    dhasval=true;
+    check();
+  });
+  $total.blur(function(){
+    total=parseInt($total.val());
+    totalhasval=true;
+  }); 
+   
+  function check(){
+      if(count==3 && totalhasval==true){
+          
+          if(ahasval==true && bhasval==true &&dhasval==true){
+             var temp=total-(a+b+d);
+             $c.val(temp);
+          }
+          else if(bhasval==true && chasval==true && dhasval==true){
+            var temp=total-(b+c+d);
+            $a.val(temp);
+          }
+          else if(ahasval==true && chasval==true && dhasval==true){
+            var  temp=total-(a+c+d);
+            $b.val(temp);
+          }
+           else if(ahasval==true && chasval==true && bhasval==true){
+            var  temp=total-(a+c+b);
+            $d.val(temp);
+          }
+
+      }
+  } 
+});
+  </script>
+ </body>
+</html>
+
+ 
+
